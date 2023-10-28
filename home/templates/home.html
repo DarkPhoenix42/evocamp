@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvoCamp</title>
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    <link rel="icon" href="/media/logos/icon.jpg" />
+    <style>
+      :root {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    {%for event in events%}
+    <section class="container-md" id="{{event.title}}">
+      <div class="card">
+        <img
+          class="card-img-top"
+          src="{{event.image.url}}"
+          alt="Card image cap"
+        />
+        <hr />
+        <div class="card-body">
+          <h5 class="card-title">{{event.title}}</h5>
+          <p class="card-text">{{event.description}}</p>
+          <p class="card-text">Venue : {{event.venue}}</p>
+          <p class="card-text">Starts at : {{event.start_time}}</p>
+          <p class="card-text">Ends at : {{event.end_time}}</p>
+          <a href="#" class="btn btn-primary">Know More</a>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+  </body>
+</html>
