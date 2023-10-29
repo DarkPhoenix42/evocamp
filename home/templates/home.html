@@ -1,37 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EvoCamp</title>
-    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
-    <link rel="icon" href="/media/logos/icon.jpg" />
-    <style>
-      :root {
-        scroll-behavior: smooth;
-      }
-    </style>
-  </head>
-  <body>
-    {%for event in events%}
-    <section class="container-md" id="{{event.title}}">
-      <div class="card">
-        <img
-          class="card-img-top"
-          src="{{event.image.url}}"
-          alt="Card image cap"
-        />
-        <hr />
-        <div class="card-body">
-          <h5 class="card-title">{{event.title}}</h5>
-          <p class="card-text">{{event.description}}</p>
-          <p class="card-text">Venue : {{event.venue}}</p>
-          <p class="card-text">Starts at : {{event.start_time}}</p>
-          <p class="card-text">Ends at : {{event.end_time}}</p>
-          <a href="#" class="btn btn-primary">Know More</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EvoCamp</title>
+  {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+  <link rel="icon" href="/media/logos/icon.jpg" />
+  <link rel="stylesheet" href="/home/templates/home_style.css" />
+</head>
+
+<body>
+  <div class="navbar nav_bar">
+    <div class="space1">
+    </div>
+    <div>
+      <img class="navicon" src="/media/logos/logo_black.png">
+    </div>
+    <div class="space2">
+    </div>
+    <div>
+      <img class="pr-img" src="/media/logos/profile.jpg">
+    </div>
+    <div class="username">
+      <p>
+        {{user.username}}
+      </p>
+    </div>
+    <div>
+      <a href="{%url 'logout'%}" style="margin-right:2rem;">
+        LOGOUT
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 sidebar leftcol">
+      <form action="" method="POST">
+        <div name="calendar" class="calendar">
+          <h4>Date: </h4>
+          <input type="date" name="date_input" id="date_input" onfocus="this.ShowPicker()">
         </div>
+        <div class="filter">
+
+          {% csrf_token %}
+
+          <h4 style="padding-top: 1rem;">Filters</h4>
+          {%for key,value in filter_toggles.items %}
+          <div class="form-check form-switch" style="padding-left: 4rem; margin-top: 1rem; margin-bottom: 1rem;">
+            {% if value == 'on' %}
+            <input class="form-check-input" name={{key}} type="checkbox" checked />
+            {% else %}
+            <input class="form-check-input" name={{key}} type="checkbox" />
+            {%endif%}
+            <label class="form-check-label" style="margin-right: 2rem">{{key}}</label>
+          </div>
+          {%endfor%}
+        </div>
+        <div class="container col-1 apply_div">
+          <button type="submit" class="btn btn-primary apply_button">
+            Apply
+          </button>
+        </div>
+    </div>
+    </form>
+    <div class="col">
+      <div class="row" name="events_cards" style="justify-content: center">
+        {%for event in events%}
+
+        <div class="card col-xxl-3 col-xl-4 col-lg-6 col-md-6 col-sm-12 event_box">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <h3 class="card-title">{{event.title}}</h3>
+            <img class="img-fluid" src="{{event.image.url}}" alt="{{event.title}} image." />
+            <hr />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+            </a>
+          </div>
+          <div class="card-body" style="justify-content: center">
+            <p class="card-text">{{event.description}}</p>
+            <p class="card-text">Venue : {{event.venue}}</p>
+            <p class="card-text">Starts at: {{event.start_time}}</p>
+            <a href="{{event.url}}" target="_blank" class="btn btn-primary">Know More</a>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-    </section>
-    {% endfor %}
-  </body>
+    </div>
+  </div>
+  </div>
+  <script>
+    document.getElementById('date_input').value = '{{ date }}';
+  </script>
+</body>
+
 </html>

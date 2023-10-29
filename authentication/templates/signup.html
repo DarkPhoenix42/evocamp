@@ -9,65 +9,43 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card shadow-2-strong" style="border-radius: 1rem">
-            <div
-              style="
+            <div style="
                 border-radius: 1rem;
                 display: flex;
                 justify-content: center;
                 margin-top: 10%;
-              "
-            >
+              ">
               <img src="/media/logos/logo.jpeg" alt="Logo" width="60%" />
             </div>
             <div class="card-body p-5 text-center">
               <h3 class="mb-5">Sign up</h3>
 
               <div class="form-outline mb-4">
-                <input
-                  type="number"
-                  class="form-control form-control-lg"
-                  name="username"
-                  id="typeEmailX-2"
-                  placeholder="Enrollment no."
-                />
+                <input type="number" class="form-control form-control-lg" name="username" id="typeEmailX-2"
+                  placeholder="Enrollment no." />
               </div>
 
               <div class="form-outline mb-4">
-                <input
-                  type="password"
-                  class="form-control form-control-lg"
-                  name="password1"
-                  id="typePasswordX-2"
-                  placeholder="Password"
-                />
+                <input type="password" class="form-control form-control-lg" name="password1" id="typePasswordX-2"
+                  placeholder="Password" />
               </div>
               <div class="form-outline mb-4">
-                <input
-                  type="password"
-                  class="form-control form-control-lg"
-                  name="password2"
-                  id="typePasswordX-2"
-                  placeholder="Confirm Password"
-                />
+                <input type="password" class="form-control form-control-lg" name="password2" id="typePasswordX-2"
+                  placeholder="Confirm Password" />
               </div>
               <div class="form-outline mb-4">
-                <select
-                  required
-                  name="bhawan"
-                  class="form-select form-select-lg"
-                  placeholder="Bhawan"
-                >
+                <select required name="bhawan" class="form-select form-select-lg" placeholder="Bhawan">
                   <option value="" disabled selected hidden>
                     Choose your Bhawan
                   </option>
-                  <option value="rajendra">Rajendra</option>
-                  <option value="jawahar">Jawahar</option>
-                  <option value="rajiv">Rajiv</option>
-                  <option value="govind">Govind</option>
-                  <option value="ravindra">Ravindra</option>
-                  <option value="radhakrishnan">Radhakrishnan</option>
-                  <option value="kasturbha">Kasturbha</option>
-                  <option value="sarojini">Sarojini</option>
+                  <option value="Rajendra">Rajendra</option>
+                  <option value="Jawahar">Jawahar</option>
+                  <option value="Rajiv">Rajiv</option>
+                  <option value="Govind">Govind</option>
+                  <option value="Ravindra">Ravindra</option>
+                  <option value="Radhakrishnan">Radhakrishnan</option>
+                  <option value="Kasturba">Kasturba</option>
+                  <option value="Sarojini">Sarojini</option>
                 </select>
               </div>
               <button class="btn btn-primary btn-lg btn-block" type="submit">
@@ -75,7 +53,11 @@
               </button>
 
               <hr class="my-4" />
+              <div class="container-fluid">
+                Have an account? Login <a href="{%url 'login'%}">here!</a>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
